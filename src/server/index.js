@@ -11,9 +11,9 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 app.use("/", express.static(path.join(__dirname, "../public")));
-app.use("/", express.static(path.join(__dirname, "../dist")));
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '../../dist/index.html'));
+app.use(express.static(path.join(__dirname, '../dist')));
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, '../dist/index.html'));
 });
 
 app.get("/rovers", async (req, res) => {
@@ -41,10 +41,11 @@ app.get("/rovers/:name", async (req, res) => {
   } catch (err) {
     console.error(
       "An error occurred while retrieving images from the rover:",
-      error
+      err // Sửa đổi từ `error` thành `err`
     );
     res.status(500).send("Internal server error!!!");
   }
 });
+
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));

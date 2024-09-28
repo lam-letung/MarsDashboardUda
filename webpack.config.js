@@ -8,6 +8,7 @@ module.exports = {
     path: path.resolve(__dirname, 'dist'),
     filename: 'client.bundle.js'          // File JS sau khi bundle
   },
+  
   module: {
     rules: [
       {
@@ -30,7 +31,11 @@ module.exports = {
       patterns: [
         { from: 'src/public/assets', to: 'assets' }  // Copy thư mục assets vào dist
       ]
-    })
+    }),
+    new webpack.DefinePlugin({
+        'process.env.API_DOMAIN': JSON.stringify(process.env.API_DOMAIN),
+        'process.env.API_KEY': JSON.stringify(process.env.API_KEY)
+      })
   ],
   mode: 'production'
 };

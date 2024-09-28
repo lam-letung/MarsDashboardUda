@@ -104,6 +104,9 @@ const toggleTheme = (state) => {
   htmlElement.setAttribute("data-bs-theme", darkMode ? "light" : "dark");
 };
 
+// Make toggleTheme globally accessible
+window.toggleTheme = toggleTheme;
+
 /**
  * Generates greeting HTML based on the user's name.
  * @param {string} name - The name of the user.

@@ -253,7 +253,7 @@ const fetchRoverData = (state) => {
  * @param {Function} callback - The callback function to process the data.
  */
 const fetchRoverList = (callback) => {
-  fetch(`${process.env.API_SERVER}`)
+  fetch(`https://mars-dashboard-uda.vercel.app/`)
     .then((response) => response.json())
     .then((json) => callback(json));
 };
@@ -265,7 +265,7 @@ const fetchRoverList = (callback) => {
  * @param {Function} callback - The callback function to process the data.
  */
 const fetchRoverPhotos = (roverName, maxDate, callback) => {
-  fetch(`${process.env.API_SERVER}rovers/${roverName}?max_date=${maxDate}`)
+  fetch(`https://mars-dashboard-uda.vercel.app/rovers/${roverName}?max_date=${maxDate}`)
     .then((response) => response.json())
     .then((json) => callback(json));
 };
